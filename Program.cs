@@ -54,7 +54,7 @@ List<string>? GetSteamLocations()
     // Initially the string looks like this - '		"path"		"C:\\Program Files (x86)\\Steam"'
     // We are looking for matches along the "path" and simply add this string to the collection, first deleting the "path" itself, replacing \\ with \ and removing spaces
     return Regex.Matches(libraryFoldersContent, "\"path\".+?\"(.+?)\"").Cast<Match>()
-        .Select(x => x.Groups[1].Value.Replace(@"\\", @"\").Trim()).ToList();
+        .Select(x => x.Groups[1].Value.Replace(@"\\", @"\")).ToList();
 }
 var steamLocations = GetSteamLocations();
 
